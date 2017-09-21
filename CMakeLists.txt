@@ -1,10 +1,13 @@
 cmake_minimum_required(VERSION 2.8)
 project(taxi)
 
-set(CMAKE_CXX_STANDARD 11)
-set (CMAKE_CXX_FLAGS "--std=gnu++11 ${CMAKE_CXX_FLAGS}")
+# set(CMAKE_CXX_STANDARD 11)
+# set (CMAKE_CXX_FLAGS "--std=gnu++11 ${CMAKE_CXX_FLAGS}")
+SET(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-std=c++11 -pthread")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall")
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Wall")
+
+find_package (Threads)
 
 set(SOURCE_FILES
         src/agent.h
@@ -44,4 +47,5 @@ set(SOURCE_FILES
         src/utils.h src/HierarchicalFSMAgent.cpp src/HierarchicalFSMAgent.h src/ChoicePoint.h src/HierarchicalFSM.cpp src/HierarchicalFSM.h src/prettyprint.h src/MaxQ0Agent.cpp src/MaxQ0Agent.h src/HierarchicalAgent.cpp src/HierarchicalAgent.h src/MaxQQAgent.cpp src/MaxQQAgent.h src/statistic.h)
 
 add_executable(taxi ${SOURCE_FILES})
-TARGET_LINK_LIBRARIES(taxi boost_program_options pthread )
+TARGET_LINK_LIBRARIES(taxi boost_program_options ${CMAKE_THREAD_LIBS_INIT})
+# TARGET_LINK_LIBRARIES(taxi boost_program_options pthread )

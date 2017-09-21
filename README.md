@@ -36,3 +36,5 @@ The base code of WrightEagle soccer simulation 2D team (following the maxq-op al
 # Dependencies
 - libboost-dev 
 - libboost-program-options-dev
+- gpuplot
+
